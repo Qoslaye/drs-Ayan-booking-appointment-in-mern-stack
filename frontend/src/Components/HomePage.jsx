@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
+import NavBar from '../components/NavBar';
 import homeImage from '../assets/home.png';
 
 const HomePage = () => {
@@ -14,7 +15,9 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 relative overflow-x-hidden transition-colors duration-300">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
+      <NavBar isAuthenticated={false} />
+      
       {/* Decorative Background Elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 dark:bg-blue-950 rounded-full filter blur-3xl opacity-30 dark:opacity-20 -translate-y-1/2 translate-x-1/2"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-200 dark:bg-blue-950 rounded-full filter blur-3xl opacity-30 dark:opacity-20 translate-y-1/2 -translate-x-1/2"></div>
@@ -125,59 +128,6 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-
-      {/* Main Navigation Bar */}
-      <nav className="sticky top-0 z-40 backdrop-blur-md bg-white/70 dark:bg-gray-950/80 border-b border-gray-200 dark:border-gray-800/50">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center">
-            <span className="text-blue-600 dark:text-blue-400 text-2xl font-bold">healthy</span>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={toggleMobileMenu}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            aria-label="Toggle Menu"
-          >
-            <svg className="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Home</a>
-            <a href="#" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Services</a>
-            <a href="#" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">About us</a>
-            <a href="#" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Doctors</a>
-            <a href="#" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Contact Us</a>
-            
-            {/* Theme Toggle Button */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
-              aria-label="Toggle Theme"
-            >
-              {theme === 'light' ? (
-                <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </svg>
-              ) : (
-                <svg className="w-6 h-6 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              )}
-            </button>
-
-            <button
-              onClick={() => navigate('/register')}
-              className="bg-blue-600 dark:bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-700 dark:hover:bg-blue-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-blue-300 dark:hover:shadow-blue-500/25"
-            >
-              Create Account →
-            </button>
-          </div>
-        </div>
-      </nav>
 
       {/* Hero Section with Enhanced Design */}
       <div className="container mx-auto px-6 py-16 relative">

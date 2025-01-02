@@ -13,7 +13,8 @@ const LoginView = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Login attempt:', formData);
+    // For testing: directly navigate to patient dashboard
+    navigate('/patient/dashboard');
   };
 
   return (
