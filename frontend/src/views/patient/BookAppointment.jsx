@@ -32,7 +32,9 @@ const BookAppointment = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Appointment Data:', formData);
-    navigate('/patient/dashboard');
+    navigate('/patient/payment', { 
+      state: { appointmentData: formData } 
+    });
   };
 
   return (
@@ -49,7 +51,7 @@ const BookAppointment = () => {
             {/* Full Name */}
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Full Name *
+                Full Name 
               </label>
               <input
                 type="text"
@@ -64,7 +66,7 @@ const BookAppointment = () => {
             {/* Address */}
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Address *
+                Address 
               </label>
               <input
                 type="text"
@@ -79,7 +81,7 @@ const BookAppointment = () => {
             {/* Email */}
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Email *
+                Email 
               </label>
               <input
                 type="email"
@@ -94,7 +96,7 @@ const BookAppointment = () => {
             {/* Age */}
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Age *
+                Age 
               </label>
               <input
                 type="number"
@@ -111,7 +113,7 @@ const BookAppointment = () => {
             {/* Status */}
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Status *
+                Status 
               </label>
               <select
                 name="status"
@@ -129,7 +131,7 @@ const BookAppointment = () => {
             {/* Date */}
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Preferred Date *
+                Preferred Date 
               </label>
               <input
                 type="date"
@@ -145,7 +147,7 @@ const BookAppointment = () => {
             {/* Time */}
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Preferred Time *
+                Preferred Time 
               </label>
               <select
                 name="time"
@@ -164,7 +166,7 @@ const BookAppointment = () => {
             {/* Description */}
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Message for Doctor *
+                Message for Doctor 
               </label>
               <textarea
                 name="description"
