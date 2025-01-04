@@ -8,6 +8,8 @@ import PatientDashboard from './views/patient/PatientDashboard';
 import BookAppointment from './views/patient/BookAppointment';
 import AppointmentConfirmation from './views/patient/AppointmentConfirmation';
 import PaymentSection from './views/patient/PaymentSection';
+import DoctorDashboard from './views/doctor/DoctorDashboard';
+import DoctorLogin from './views/auth/DoctorLogin';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path="/patient/book-appointment" element={<BookAppointment />} />
           <Route path="/patient/payment" element={<PaymentSection />} />
           <Route path="/patient/appointment-confirmation" element={<AppointmentConfirmation />} />
+          <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
+          <Route path="/doctor/login" element={<DoctorLogin />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

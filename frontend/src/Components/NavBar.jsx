@@ -15,10 +15,11 @@ const NavBar = ({ isAuthenticated = false }) => {
     { name: 'Home', href: '#' },
     { name: 'Services', href: '#services' },
     { name: 'About us', href: '#about' },
-    { name: 'Doctors', href: '#doctors' },
+    { name: 'Doctors', href: '/doctor/login' },
     { name: 'Contact Us', href: '#contact' }
   ];
 
+  
   return (
     <>
       <nav className="sticky top-0 z-40 backdrop-blur-md bg-white/70 dark:bg-gray-950/80 border-b border-gray-200 dark:border-gray-800/50">
@@ -39,7 +40,13 @@ const NavBar = ({ isAuthenticated = false }) => {
               {navigationItems.map((item) => (
                 <a
                   key={item.name}
-                  href={item.href}
+                  href={item.href.startsWith('/') ? undefined : item.href}
+                  onClick={(e) => {
+                    if (item.href.startsWith('/')) {
+                      e.preventDefault();
+                      navigate(item.href);
+                    }
+                  }}
                   className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
                 >
                   {item.name}
@@ -108,7 +115,13 @@ const NavBar = ({ isAuthenticated = false }) => {
             {navigationItems.map((item) => (
               <a
                 key={item.name}
-                href={item.href}
+                href={item.href.startsWith('/') ? undefined : item.href}
+                onClick={(e) => {
+                  if (item.href.startsWith('/')) {
+                    e.preventDefault();
+                    navigate(item.href);
+                  }
+                }}
                 className="block px-3 py-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
