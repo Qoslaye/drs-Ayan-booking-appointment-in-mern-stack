@@ -17,10 +17,10 @@ const PaymentSection = () => {
   }
 
   const localPaymentMethods = [
-    { id: 'evc', name: 'Evc Plus', color: 'rgb(0, 166, 81)' },  // EVC Plus green
-    { id: 'zaad', name: 'Zaad', color: 'rgb(0, 166, 81)' },    // Zaad blue
-    { id: 'sahal', name: 'Sahal', color: 'rgb(0, 166, 81)' },  // Sahal orange
-    { id: 'edahab', name: 'E-dahab', color: 'rgb(0, 166, 81)' } // E-dahab light blue
+    { id: 'evc', name: 'Evc Plus', color: 'rgb(0, 166, 81)' },  // EVC Plus and color green 
+    { id: 'zaad', name: 'Zaad', color: 'rgb(0, 166, 81)' },    // Zaad and color green 
+    { id: 'sahal', name: 'Sahal', color: 'rgb(0, 166, 81)' },  // Sahal and color green 
+    { id: 'edahab', name: 'E-dahab', color: 'rgb(0, 166, 81)' } // E-dahab and color green 
   ];
 
   const handlePayment = async (e) => {
