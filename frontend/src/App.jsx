@@ -10,6 +10,7 @@ import AppointmentConfirmation from './views/patient/AppointmentConfirmation';
 import PaymentSection from './views/patient/PaymentSection';
 import DoctorDashboard from './views/doctor/DoctorDashboard';
 import DoctorLogin from './views/auth/DoctorLogin';
+import AllAppointments from './views/doctor/AllAppointments';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/patient/appointment-confirmation" element={<AppointmentConfirmation />} />
           <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
           <Route path="/doctor/login" element={<DoctorLogin />} />
+          <Route path="/doctor/all-appointments" element={<AllAppointments />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
