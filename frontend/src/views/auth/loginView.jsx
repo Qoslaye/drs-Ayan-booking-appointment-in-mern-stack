@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 import HomeButton from '../../components/HomeButton';
@@ -11,10 +11,38 @@ const LoginView = () => {
     password: '',
   });
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    const doctorToken = localStorage.getItem('doctorToken');
+    const patientToken = localStorage.getItem('patientToken');
+    
+    if (doctorToken) {
+      navigate('/doctor/dashboard');
+    } else if (patientToken) {
+      navigate('/patient/dashboard');
+    }
+  }, [navigate]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // For testing: directly navigate to patient dashboard
-    navigate('/patient/dashboard');
+    try {
+      // Simulate patient login
+      localStorage.setItem('patientToken', 'dummy-patient-token');
+      navigate('/patient/dashboard'); // Always redirect to patient dashboard
+    } catch (error) {
+      console.error('Login error:', error);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleRegisterClick = () => {
+    navigate('/register');
   };
 
   return (
@@ -31,7 +59,7 @@ const LoginView = () => {
           <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
             Or{' '}
             <button
-              onClick={() => navigate('/register')}
+              onClick={handleRegisterClick}
               className="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
             >
               create a new account
@@ -52,7 +80,7 @@ const LoginView = () => {
                 required
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-gray-900 dark:text-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                onChange={handleInputChange}
               />
             </div>
             <div>
@@ -66,7 +94,7 @@ const LoginView = () => {
                 required
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-gray-900 dark:text-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                onChange={handleInputChange}
               />
             </div>
           </div>

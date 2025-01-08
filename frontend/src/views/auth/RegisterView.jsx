@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 import HomeButton from '../../components/HomeButton';
@@ -13,9 +13,30 @@ const RegisterView = () => {
     confirmPassword: '',
   });
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    const patientToken = localStorage.getItem('patientToken');
+    if (patientToken) {
+      navigate('/patient/dashboard');
+    }
+  }, [navigate]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Registration attempt:', formData);
+    try {
+      if (formData.password !== formData.confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+      }
+      // Simulate patient registration
+      localStorage.setItem('patientToken', 'dummy-patient-token');
+      navigate('/patient/dashboard'); // Always redirect to patient dashboard
+    } catch (error) {
+      console.error('Registration error:', error);
+    }
+  };
+
+  const handleSignInClick = () => {
+    navigate('/login');
   };
 
   return (
@@ -32,7 +53,7 @@ const RegisterView = () => {
           <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
             Already have an account?{' '}
             <button
-              onClick={() => navigate('/login')}
+              onClick={handleSignInClick}
               className="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
             >
               Sign in

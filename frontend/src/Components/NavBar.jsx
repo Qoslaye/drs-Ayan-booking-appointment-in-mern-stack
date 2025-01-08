@@ -121,9 +121,9 @@ const NavBar = ({ isAuthenticated = false }) => {
                     e.preventDefault();
                     navigate(item.href);
                   }
+                  setIsMobileMenuOpen(false);
                 }}
                 className="block px-3 py-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-                onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
               </a>

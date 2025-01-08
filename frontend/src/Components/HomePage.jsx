@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
-import NavBar from '../components/NavBar';
+import NavBar from '../Components/NavBar';
 import homeImage from '../assets/home.png';
 
 const HomePage = () => {
@@ -246,7 +246,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 
