@@ -14,6 +14,19 @@ const HomePage = () => {
     document.body.style.overflow = !isMobileMenuOpen ? 'hidden' : 'unset';
   };
 
+  // Navigation handlers
+  const handleDoctorSection = (e) => {
+    e.preventDefault();
+    console.log('Doctor section clicked');
+    navigate('/doctor/login');
+  };
+
+  const handlePatientSection = (e) => {
+    e.preventDefault();
+    console.log('Patient section clicked');
+    navigate('/patient/login');
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
       <NavBar isAuthenticated={false} />
@@ -144,14 +157,20 @@ const HomePage = () => {
               comprehensive care with cutting-edge technology and a patient-first approach.
             </p>
             <div className="flex space-x-4">
-              <button className="bg-blue-600 dark:bg-blue-500 text-white px-8 py-4 rounded-full hover:bg-blue-700 dark:hover:bg-blue-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-blue-300 dark:hover:shadow-blue-500/25 flex items-center">
-                Book Now
+              <button
+                onClick={handlePatientSection}
+                className="bg-blue-600 dark:bg-blue-500 text-white px-8 py-4 rounded-full hover:bg-blue-700 dark:hover:bg-blue-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-blue-300 dark:hover:shadow-blue-500/25 flex items-center"
+              >
+                Patient Section
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                 </svg>
               </button>
-              <button className="border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 px-8 py-4 rounded-full hover:bg-blue-50 dark:hover:bg-blue-950 transform hover:scale-105 transition-all duration-300">
-                Contact Us
+              <button
+                onClick={handleDoctorSection}
+                className="border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 px-8 py-4 rounded-full hover:bg-blue-50 dark:hover:bg-blue-950 transform hover:scale-105 transition-all duration-300"
+              >
+                Doctor Section
               </button>
             </div>
           </div>
@@ -187,8 +206,11 @@ const HomePage = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-4 dark:text-white">Online appointment</h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-6 flex-1">Schedule your visit with just a few clicks. Quick, easy, and convenient booking system available 24/7.</p>
-                <button className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium flex items-center group-hover:translate-x-2 transition-transform duration-300 mt-auto">
-                  Make an appointment
+                <button 
+                  onClick={handlePatientSection}
+                  className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium flex items-center"
+                >
+                  Book Now
                   <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                   </svg>
@@ -197,33 +219,7 @@ const HomePage = () => {
             </div>
           </div>
 
-          {/* Emergency Case Card */}
-          <div className="group h-full">
-            <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg dark:shadow-gray-950/50 hover:shadow-2xl dark:hover:shadow-red-500/10 transform hover:-translate-y-2 transition-all duration-300 relative overflow-hidden h-full flex flex-col">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-red-100 dark:bg-red-900/50 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-red-200 dark:group-hover:bg-red-800/50 transition-colors duration-300"></div>
-              <div className="relative flex flex-col flex-1">
-                <div className="w-16 h-16 bg-red-100 dark:bg-red-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold mb-4 dark:text-white">Emergency Case</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4 flex-1">Available 24/7 for urgent medical assistance. Our emergency response team is always ready to help.</p>
-                <div className="mb-6">
-                  <p className="text-2xl font-bold text-red-600 dark:text-red-400">+48 123 123 124</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Round-the-clock support</p>
-                </div>
-                <button className="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300 font-medium flex items-center group-hover:translate-x-2 transition-transform duration-300 mt-auto">
-                  Contact us
-                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Our Doctors Card */}
+          {/* Doctor Section Card */}
           <div className="group h-full">
             <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg dark:shadow-gray-950/50 hover:shadow-2xl dark:hover:shadow-green-500/10 transform hover:-translate-y-2 transition-all duration-300 relative overflow-hidden h-full flex flex-col">
               <div className="absolute top-0 right-0 w-32 h-32 bg-green-100 dark:bg-green-900/50 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-green-200 dark:group-hover:bg-green-800/50 transition-colors duration-300"></div>
@@ -235,12 +231,30 @@ const HomePage = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-4 dark:text-white">Our Doctors</h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-6 flex-1">Meet our team of specialized healthcare professionals with years of experience in various medical fields.</p>
-                <button className="text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 font-medium flex items-center group-hover:translate-x-2 transition-transform duration-300 mt-auto">
+                <button 
+                  onClick={handleDoctorSection}
+                  className="text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 font-medium flex items-center"
+                >
                   Meet the team
                   <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Card */}
+          <div className="group h-full">
+            <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 relative overflow-hidden h-full flex flex-col">
+              <div className="relative flex flex-col flex-1">
+                <h3 className="text-xl font-bold mb-4 dark:text-white">Emergency Contact</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-6 flex-1">
+                  Available 24/7 for urgent medical assistance. Our emergency response team is always ready.
+                </p>
+                <div className="text-red-600 dark:text-red-400 font-bold">
+                  +252 61 XXX XXXX
+                </div>
               </div>
             </div>
           </div>

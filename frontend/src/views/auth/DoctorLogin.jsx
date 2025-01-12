@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import HomeButton from '../../components/HomeButton';
-
 const DoctorLogin = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -10,7 +8,6 @@ const DoctorLogin = () => {
     password: ''
   });
   const [loading, setLoading] = useState(false);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -18,45 +15,28 @@ const DoctorLogin = () => {
       [name]: value
     }));
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      // Simulate doctor login
-      localStorage.setItem('doctorToken', 'dummy-doctor-token');
-      navigate('/doctor/dashboard'); // Always redirect to doctor dashboard
-    } catch (error) {
-      console.error('Login error:', error);
-    }
-  };
-
-  useEffect(() => {
-    const doctorToken = localStorage.getItem('doctorToken');
-    const patientToken = localStorage.getItem('patientToken');
-    
-    if (doctorToken) {
+    setLoading(true);
+    // Simulate login process
+    setTimeout(() => {
+      setLoading(false);
       navigate('/doctor/dashboard');
-    } else if (patientToken) {
-      navigate('/patient/dashboard');
-    }
-  }, [navigate]);
-
+    }, 1500);
+  };
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white dark:bg-gray-800 py-8 px-4 shadow sm:rounded-lg sm:px-10 relative">
-          <div className="absolute top-4 left-4">
-            <HomeButton />
-          </div>
-
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
-            Doctor Login
-          </h2>
-          <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
-            Access your doctor dashboard
-          </p>
-
-          <form className="space-y-6 mt-8" onSubmit={handleSubmit}>
+        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
+          Doctor Login
+        </h2>
+        <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
+          Access your doctor dashboard
+        </p>
+      </div>
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="bg-white dark:bg-gray-800 py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label 
                 htmlFor="email" 
@@ -78,7 +58,6 @@ const DoctorLogin = () => {
                 />
               </div>
             </div>
-
             <div>
               <label 
                 htmlFor="password" 
@@ -100,7 +79,6 @@ const DoctorLogin = () => {
                 />
               </div>
             </div>
-
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <input
@@ -116,7 +94,6 @@ const DoctorLogin = () => {
                   Remember me
                 </label>
               </div>
-
               <div className="text-sm">
                 <Link
                   to="/forgot-password"
@@ -126,7 +103,6 @@ const DoctorLogin = () => {
                 </Link>
               </div>
             </div>
-
             <div>
               <button
                 type="submit"
@@ -144,10 +120,26 @@ const DoctorLogin = () => {
               </button>
             </div>
           </form>
+          <div className="mt-6">
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400">
+                  Need help?
+                </span>
+              </div>
+            </div>
+            <div className="mt-6 text-center">
+              <span className="text-sm text-gray-600 dark:text-gray-400">
+                Contact administrator for doctor account access
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 };
-
-export default DoctorLogin; 
+export default DoctorLogin;
